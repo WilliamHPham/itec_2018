@@ -1,0 +1,80 @@
+<section class="our-products-beta our-products " id="our-products">
+    <div class="container">
+        <div class="section_inner">
+            <div class="heading-section heading-section--base mt-5">
+                <div class="heading-section__title heading-section__title--center">
+                    <h3>Our Products</h3>
+                    <?php echo  Mage::getResourceModel('core/url_rewrite')->getRequestPathByIdPath('product/3', $store);?>
+                </div>
+            </div>
+            <div class="section__content products">
+                <ul class="clear-list-style products-quick-link">
+                    <?php
+                        $cateArr = array("Featured","Bestseller", "Sale");
+                        $listCate = array();
+                        foreach($cateArr as $category) {
+                            $current_category = Mage::getResourceModel('catalog/category_collection')
+                                ->addFieldToFilter('name', $category)
+                                ->addFieldToFilter('is_active', 1)
+                                ->getFirstItem()
+                                ->getId();
+                            if(!empty($current_category)) {
+                                $listCate[] = $current_category;
+                            }
+                        }
+                        for($i = 0; $i < count($listCate); $i++):
+                            $cateName = Mage::getModel('catalog/category')->load($listCate[$i])->getName();
+                    ?>
+                    <li <?php if($i == 0) echo 'class="active"'; ?> >
+                        <a data-toggle="tab" data-toggle="pill" href="#<?php echo $cateName; ?>"><?php echo $cateName; ?></a>
+                    </li>
+                    <?php endfor; ?>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <?php
+                for($i = 0; $i < count($listCate);$i++):
+                    $collection = Mage::getModel('catalog/category')
+                                    ->load($listCate[$i])
+                                    ->getProductCollection();
+                    $products = $collection->addAttributeToSelect(array('name', 'image','price'))
+                                            ->addAttributeToSort('id', 'desc')
+                                            ->setPageSize(4);
+            ?>
+            <div class="tab-pane fade <?php if($i == 0) echo ' in active'; ?>" id="<?php echo Mage::getModel('catalog/category')->load($listCate[$i])->getName() ?>" >
+                <div class="row">
+                    <?php foreach ($products as $product):
+                        $url = Mage::helper('catalog/product')->getProductUrl($product->getId());
+                        ?>
+                        <div class="col-md-3">
+                            <div class="product-item product-item--gamma">
+                                <div class="product-item__image">
+                                    <img src="<?php echo Mage::getBaseUrl('media').'catalog/product/'.$product->getImage()?>" alt="<?php echo $product->getName() ?>">
+                                    <div class="product-item__link-box">
+                                      <span data-toggle="modal" data-target="#shopModal">Quick Shop</span>
+                                    </div>
+                                </div>
+                                <div class="product-item__content">
+                                    <div class="product-item__name product-item__name--left">
+                                        <h3 class="title">
+                                          <a class="name" href="<?php echo $url; ?>">
+                                            <?php echo $product->getName() ?>
+                                          </a>
+                                      </h3>
+                                    </div>
+                                    <div class="product-item__price product-item__price--left">
+                                        <span class="product-item__price__content product-item__price__content--op">$
+                                          <?php echo $product->getPrice() ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endfor; ?>
+        </div>
+    </div>
+</section>

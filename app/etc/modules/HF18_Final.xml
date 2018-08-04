@@ -1,0 +1,9 @@
+<config>
+ <modules>
+  <HF18_Final>
+      <version>0.1.0</version>
+      <active>true</active>
+      <codePool>local</codePool>
+    </HF18_Final>
+  </modules>
+</config>

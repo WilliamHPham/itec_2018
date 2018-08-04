@@ -1,0 +1,172 @@
+<?php
+$customer = $this->getCustomer();
+$address = $this->getCustomerAddress();
+$country = $this->getCountries();
+if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+    $region = $this->getRegionCollection('US');
+} else {
+    $region = $this->getRegionCollection($address->getCountry());
+}
+?>
+<div class="form-row">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="billing:firstname">
+                First name
+                <em style="color: red">*</em>
+            </label>
+            <input type="text" class="form-control" id="billing:firstname" title="b*"
+                   name="billing[firstname]"
+                   placeholder="First name" required value="">
+            <p class="message text-danger" style="display: none">This is required</p>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="billing:lastname">
+                Last name
+                <em style="color: red">*</em>
+            </label>
+            <input type="text" class="form-control" id="billing:lastname" title="b*"
+                   name="billing[lastname]"
+                   placeholder="Last name"
+                   required value="">
+            <p class="message text-danger" style="display: none">This is required</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="billing:email" style="padding-top: 10px;">
+                Email
+                <em style="color: red">*</em>
+            </label>
+            <input type="email" class="form-control" id="billing:email" name="billing[email]"
+                   placeholder="Email"
+                   required value="">
+            <p class="message text-danger" style="display: none">This is required</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="billing:company" style="padding-top: 10px;">
+                Company
+                <em style="color: red">*</em>
+            </label>
+            <input type="text" class="form-control" id="billing:company" title="b*"
+                   name="billing[company]"
+                   placeholder="Company"
+                   required value="">
+            <p class="message text-danger" style="display: none">This is required</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="billing:street1" style="padding-top: 10px;">
+                Address
+                <em style="color: red">*</em>
+            </label>
+            <input type="text" class="form-control" name="billing[street][]" title="b*"
+                   id="billing:street1"
+                   placeholder="Address"
+                   required value="">
+            <p class="message text-danger" style="display: none">This is required</p>
+            <input type="text" class="form-control" name="billing[street][]" id="billing:street2"
+                   placeholder="Address" value="" style="margin-top: 10px;"
+            >
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="billing:postcode" style="padding-top: 10px;">
+                Zip/Postal Code
+                <em style="color: red">*</em>
+            </label>
+            <input type="text" class="form-control" id="billing:postcode" name="billing[postcode]"
+                   title="zip"
+                   placeholder="Zip/Postal Code" required value="">
+            <p class="message_zip text-danger" style="display: none">This is required</p>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="billing:city" style="padding-top: 10px;">City
+                <em style="color: red">*</em></label>
+            <input type="text" class="form-control" id="billing:city" name="billing[city]"
+                   placeholder="City" title="b*" value="">
+            <p class="message text-danger" style="display: none">This is required</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="billing:country_id" style="padding-top: 10px;">
+                Country
+                <em style="color: red">*</em>
+            </label>
+            <select name="billing[country_id]" id="billing:country_id" title=""
+                    class="form-control countryBilling required">
+                <?php foreach ($country as $item): ?>
+                    <option value="<?php echo $item['value'] ?>"
+                            data-value="<?php echo $item['value'] ?>"
+                            data-link="<?php echo Mage::getUrl('hf18/onestep/ajaxRegion'); ?>" <?php if ($item['value'] == 'US') {
+                        echo "selected";
+                    } ?>><?php echo $item['label'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <input type="text" class="regionInput hidden" title="" value=""
+                   placeholder="State/Province">
+            <p class="message text-danger" style="display: none">This is required</p>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="billing:region" style="padding-top: 10px;">
+                State/Province
+                <em style="color: red">*</em>
+            </label>
+            <select name="billing[region_id]" id="billing:region" title=""
+                    class="form-control regionSelectBilling required">
+                <?php foreach ($region as $item): ?>
+                    <option value="<?php echo $item['region_id']?>"><?php echo $item['name']?></option>
+                <?php endforeach;?>
+            </select>
+            <input type="text" name="billing[region]" class="regionInputBilling <?php if($region){echo "hidden";} else{echo "title='b*'";} ?>"
+                   value=""  placeholder="State/Province">
+            <p class="message text-danger" style="display: none">This is required</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="billing:telephone" style="padding-top: 10px;">
+                Telephone
+                <em style="color: red">*</em>
+            </label>
+            <input type="text" title="phone" class="form-control" id="billing:telephone"
+                   name="billing[telephone]"
+                   placeholder="Phone"
+                   required value="">
+            <p class="message_phone text-danger" style="display: none">Please enter a valid phone
+                number.</p>
+        </div>
+    </div>
+
+    <div class="row" id="new_account" style="display: none">
+        <div class="col-md-12 mb-3">
+            <label for="billing:customer_password" style="padding-top: 10px;">
+                Password
+                <em style="color: red">*</em>
+            </label>
+            <input type="password" class="form-control" id="billing:customer_password"
+                   name="billing[customer_password]"
+                   placeholder="" required value="">
+            <p class="message text-danger" style="display: none">This is required</p>
+            <label for="billing:confirm_password" style="padding-top: 10px;">
+                Confirm Password
+                <em style="color: red">*</em>
+            </label>
+            <input type="password" class="form-control" id="billing:confirm_password"
+                   name="billing[confirm_password]"
+                   placeholder="" required value="">
+            <p class="message_password text-danger" style="display: none">Passwords do not match!</p>
+        </div>
+    </div>
+    <input type="hidden" name="billing[save_in_address_book]" value="1">
+</div>

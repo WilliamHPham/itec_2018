@@ -1,0 +1,31 @@
+<?php
+    $shippingMethod= $this->getShippingMethod();
+    $allowedFreeShipping=$this->isAllowedFreeShipping();
+?>
+<div class="onestep-block" id="onestep-shipping-method">
+    <div class="onestep-title">
+        <div class="onestep-title-number">
+            <span class="text-center">2</span>
+        </div>
+        <div class="onestep-title-caption">
+            <p>Shipping Method</p>
+            <?php $itemIndex = 1; ?>
+            <?php $i = 0; foreach ($shippingMethod as $item):?>
+                <div <?php if(!$allowedFreeShipping && $item['title']=='Free Shipping'){ echo 'style="display: none"';}?> class="onestep-shipping-title">
+                    <?php echo $item['title'];?>
+                    <label class="onestep-container">
+                            <?php echo $item['method'].' '.Mage::helper('checkout')->formatPrice($item['price'])?><br>
+                        <p>
+                            <input type="radio" name="shipping_method" class="onestep-shipping-radio shipping"
+                                <?php if($i == 0){echo " checked=\"checked\"";} $i++ ?> data-value="<?php echo $item['shipping_type'] ?>" data-link = "<?php echo Mage::getUrl('hf18/onestep/ajaxShipping'); ?>"
+                                    value="<?php echo $item['code']?>">
+                            <span class="checkmark"></span>
+                        </p>
+                    </label>
+                </div>
+                <?php $itemIndex++; ?>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>
+

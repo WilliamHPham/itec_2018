@@ -1,0 +1,81 @@
+<div id="img-loader" style="display:none">
+    <img src="<?php echo $this->getSkinUrl('images/Forrest.gif'); ?>" style="width:180px;height:180px;margin-left:43%;margin-top:20%" />
+</div>
+<header>
+    <div id="top-header">
+        <div class="row header_row">
+            <div class="col-sm-4">
+                <div class="d-flex justify-content-start row list-inline">
+                    <ul class="item_left list-inline">
+                        <li>EN</li>
+                        <li>USA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <p class="item_center text-center"><?php echo Mage::getStoreConfig('tab1/general/text_field'); ?></p>
+            </div>
+            <div class="col-sm-4">
+                <div class="d-flex justify-content-end row list-inline header_row">
+                    <ul class="social-icon list-inline">
+                        <li><a href="<?php echo Mage::getStoreConfig('tab1/general/text_field_gl'); ?>" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="<?php echo Mage::getStoreConfig('tab1/general/text_field_fb'); ?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="<?php echo Mage::getStoreConfig('tab1/general/text_field_tw'); ?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="<?php echo Mage::getStoreConfig('tab1/general/text_field_pt'); ?>" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <?php
+        $category = Mage::getModel('catalog/category')->load('3');
+        $subcategories = $category->getChildrenCategories();
+        ?>
+        <div class="rv-navbar rv-navbar-invert rv-navbar-plain">
+            <div class="rv-navbar-wrapper">
+                <div class="container-menu">
+                    <div class="rv-navbar-inner clearfix">
+                        <div class="navbar-logo" style="width: 250px;height: 60px;margin: -10px 100px">
+                            <a href="<?php echo Mage::getBaseUrl();?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'uploads/'.Mage::getStoreConfig('tab1/general/imagefield');?>" alt="" style="width: 100%;height: 100%"></a>
+                        </div>
+                        <nav class="rv-navbar-menu" style="padding-right: 100px">
+                            <ul class="rv-navbar-menu-list clear-list-style">
+                                <?php foreach ($subcategories as $_category):?>
+                                    <li class="dropdown">
+                                        <?php if($_category->getName()=="Home"):?>
+                                            <a href="<?php echo Mage::getBaseUrl();?>"><?php echo $_category->getName();?></a>
+                                        <?php else: ?><a href="#"><?php echo $_category->getName();?></a>
+                                        <?php endif ?>
+                                        <?php $categoryChildren = $_category->getChildrenCategories();?>
+                                        <?php if($categoryChildren->getSize()) : ?>
+                                            <ul class="dropdown-menu">
+                                                <?php foreach($categoryChildren as $_categoryChild) : ?>
+                                                    <?php $_categoryChildModel = Mage::getModel('catalog/category')->load($_categoryChild->getId());?>
+                                                    <?php $categoryGrandchildren=$_categoryChild->getChildrenCategories(); ?>
+                                                    <li class="dropdown">
+                                                        <?php
+                                                        echo  '<a href="' . $_categoryChildModel->getUrl() . '"' . '>' .  $_categoryChild->getName() . '</a>';
+                                                        ?>
+                                                    </li>
+                                                    <?php if($categoryGrandchildren->getSize()) : ?>
+                                                        <?php foreach($categoryGrandchildren as $_categoryGrandchild) : ?>
+                                                            <?php $_categoryGrandchildModel = Mage::getModel('catalog/category')->load($_categoryGrandchild->getId());?>
+                                                            <li class="dropdown-child">
+                                                                <?php echo '<a href="' . $_categoryGrandchildModel->getUrl() . '"' . '>' .   $_categoryGrandchild->getName(). '</a>';?>
+                                                            </li>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                    </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

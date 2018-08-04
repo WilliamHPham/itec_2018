@@ -1,0 +1,151 @@
+#onestep-header {
+    margin-bottom: 20px;
+}
+
+#onestep-header h3 {
+    margin-top: 0px;
+}
+
+.onestep-header-link {
+    margin-top: 20px;
+}
+
+#onestep-content {
+    margin: 0;
+}
+
+.onestep-column {
+    padding: 0;
+}
+
+#onestep-right {
+    padding-left: 15px;
+}
+
+.onestep-block {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.onestep-title {
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.onestep-title-number {
+    width: 30px;
+    float: left;
+    color: #fff;
+}
+
+.onestep-title-number > span {
+    padding: 2px 6px;
+    background: #ac907f;
+}
+
+.onestep-title-caption {
+    float: left;
+}
+
+.onestep-title-caption > p {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.onestep-content.row {
+    margin: 0;
+}
+
+.chckbox {
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.billing_title {
+    padding-top: 10px;
+}
+
+.form-row input[type='text'], .form-row input[type='email'], .form-row select {
+    border-radius: 0;
+}
+
+.multi_add {
+    background-color: #F4F4F4;
+    cursor: pointer;
+    border: 1px solid #F4F4F4;
+    margin-bottom: 10px;
+}
+
+.scroll-bar {
+    overflow: scroll;
+    max-height: 260px;
+    overflow-x: hidden;
+}
+
+.name {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px
+}
+
+.address {
+    margin-left: 10px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.phone {
+    margin-left: 10px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.dashed {
+    border: 1px dashed #090;
+}
+
+.newBilling {
+    padding-top: 10px;
+    font-weight: 900;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    border: 3px solid #F4F4F4;
+}
+
+.new_billing {
+    padding-top: 10px;
+}
+
+.rollBack {
+    padding-top: 10px;
+    font-weight: 900;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    border: 3px solid #F4F4F4;
+}
+
+.newShipping {
+    padding-top: 10px;
+    font-weight: 900;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    border: 3px solid #F4F4F4;
+}
+
+.new_shipping {
+    padding-top: 10px;
+}
+
+.multi {
+    background-color: #F4F4F4;
+    cursor: pointer;
+    border: 1px solid #F4F4F4;
+    margin-bottom: 10px;
+}

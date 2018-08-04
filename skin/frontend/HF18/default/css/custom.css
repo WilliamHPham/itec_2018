@@ -1,0 +1,51 @@
+header {
+}
+
+#top-header {
+    height: 60px;
+    background: #CDCDCD;
+}
+
+#menu {
+    height: 90px;
+
+}
+
+#slider {
+    height: 650px;
+}
+
+#content {
+    height: auto;
+}
+
+#two-blocks {
+    height: 420px;
+    padding-top: 70px;
+}
+
+#our-products {
+    height: 770px;
+}
+
+#products-collection {
+    height: 720px;
+}
+
+#our-blogs {
+    height: 550px;
+    background-color: #F9F9F9;
+}
+
+footer {
+}
+
+#footer-wrapper {
+    background: #2D2827;
+    height: auto;
+}
+
+#footer-copyright {
+    height: 50px;
+    background: #D7D7D7;
+}

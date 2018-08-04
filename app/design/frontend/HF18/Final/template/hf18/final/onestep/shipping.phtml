@@ -1,0 +1,51 @@
+<?php
+$customer = $this->getCustomer();
+$address = $this->getCustomerShippingAddress();
+if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+    $region = $this->getRegionCollection('US');
+} else {
+    $region = $this->getRegionCollection($address->getCountry());
+}
+$address_shipping=$this->getShippingAddressIdQuote();
+?>
+<div class="shipping-form onestep-block" style="display: none">
+    <div class="onestep-title">
+        <div class="onestep-title-caption">
+            <p>Shipping address</p>
+        </div>
+    </div>
+    <div class="onestep-content row">
+        <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) : ?>
+            <div class="row ">
+                <div class="col-md-12 mb-3" name="shipping_address_id" >
+                    <div class="address_items_shipping">
+                        <div class="well well-sm multi_add dashed shipping_add" style="margin-top: 10px;"
+                             data-value="<?php echo $address->getId() ?>">
+                            <p class="name"><?php echo $address->getName(); ?></>
+                            <p class="address">
+                                Address: <?php echo $address->getStreet(1) . ", " . $address->getCity() . ", " .$address->getRegion(); ?></p>
+                            <p class="address"><?php echo $this->getCountryByCode($address->getCountry()); ?> </p>
+                            <p class="phone">Phone: <?php echo $address->getTelephone(); ?></p>
+                            <input type="radio" hidden name="shipping_address_id" checked="checked"
+                                   id="idShipping_<?php echo $address->getId()?>" class="shipping_ai" value="<?php echo $address->getId()?>">
+                            <input type="text" hidden name="shipping[address_id]" class="shippingai" id="inputShipping_<?php echo $address->getId()?>"
+                                   value="<?php echo $address_shipping?>">
+                        </div>
+                    </div>
+                    <div class="well well-sm newShipping multi shipping_add" data-value="">Add New Shipping Address
+                        <input type="radio" hidden name="shipping_address_id" id="idShipping_" value="">
+                        <input type="hidden" hidden name="shipping[address_id]"  id="inputShipping_" value="" >
+                    </div>
+                    <div class="well well-sm roll_back_shipping multi ">Back To My Address</div>
+                </div>
+            </div>
+            <div class="new_shipping" id="shipping_empty" style="display: none">
+                <?php echo $this->getChildHtml('hf18_onestep_emptyShipping') ?>
+            </div>
+        <?php else: ?>
+            <div id="shipping_guest">
+                <?php echo $this->getChildHtml('hf18_onestep_emptyShipping') ?>
+            </div>
+        <?php endif ?>
+    </div>
+</div>

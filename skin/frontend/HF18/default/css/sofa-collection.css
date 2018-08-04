@@ -1,0 +1,56 @@
+#products-collection {
+    padding: 60px 60px 100px;
+}
+
+#collection-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#collection-container img {
+    margin-left: auto;
+    margin-right: auto;
+}
+#collection-content {
+    margin-top: -600px;
+    padding: 150px 300px;
+}
+#collection-content h1 {
+    font-family: "Dosis", Arial, "Helvetica Neue", sans-serif;
+    position: relative;
+    font-size: 48px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#collection-content h1:after {
+    content: '';
+    height: 2px;
+    width: 50px;
+    background: #ac907f;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    margin-left: -25px;
+}
+
+#collection-content p {
+    margin-top: 50px;
+    color: #fff;
+}
+
+#collection-content button {
+    background: #ac907f;
+    color: #fff;
+    border-radius: 0;
+    height: 40px;
+    width: 150px;
+    margin-top: 40px;
+}
+.text-overflow {
+    max-height: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

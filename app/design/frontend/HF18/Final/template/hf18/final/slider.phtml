@@ -1,0 +1,57 @@
+<section id="slider">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <?php
+            // Set static number of slider
+            $numberSlider = 3;
+            $activeSlider = array();
+
+            for($i = 0; $i < $numberSlider; $i++):
+                $slider = $i + 1;
+                if(!empty(Mage::getStoreConfig('contenttab/homeslider'.$slider.'/slider_image'.$slider))):
+                    $activeSlider[] = $slider;
+                ?>
+                <li data-target="#myCarousel" data-slide-to="<?php echo $i ?>" <?php if($i == 0) echo 'class="active"' ?>></li>
+                <?php endif; ?>
+            <?php endfor;?>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+
+            <?php
+            foreach($activeSlider as $slider):
+                ?>
+                <div class="item <?php if($slider == 1) echo "active" ?>">
+                    <img src="<?php echo Mage::getBaseUrl('media').'sliders/'.Mage::getStoreConfig('contenttab/homeslider'.$slider.'/slider_image'.$slider); ?>"
+                         style="width:100%;height:650px;">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <div class="text text-uppercase wow fadeInLeft animated">
+                            <?php echo Mage::getStoreConfig('contenttab/homeslider'.$slider.'/slider_title'.$slider); ?>
+                        </div>
+                        <div class="text-bottom text-uppercase wow fadeInUp animated">
+                            <?php echo Mage::getStoreConfig('contenttab/homeslider'.$slider.'/slider_content'.$slider); ?>
+                        </div>
+                        <div class="text-center btn-slider">
+                            <button type="button" class="btn btn-link-left btn-general wow fadeInUp animated">VIEW DETAIL</button>
+                            <a href="<?php echo Mage::getBaseUrl().Mage::getStoreConfig('contenttab/homeslider'.$slider.'/slider_button'.$slider); ?>" class="btn btn-link-right btn-general btn-right-color wow fadeInUp animated">SHOP NOW</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>

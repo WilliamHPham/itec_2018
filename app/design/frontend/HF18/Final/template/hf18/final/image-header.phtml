@@ -1,0 +1,21 @@
+<div id="header-image">
+    <div class = "image-box">
+        <img class="head"
+             src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'uploads/'.Mage::getStoreConfig('contenttab/imageheader/imagefield');?>"
+             alt="Image">
+    </div>
+
+    <div class="img-header-container">
+        <div class="text-up-position">
+            <div class="text-centered text-uppercase text-up">Shop</div>
+        </div>
+        <div class="text-down-position">
+            <div class="text-centered text-down">
+                <ul class="clear-list-style_shop"><!-- change june 11 2018 -->
+                    <li><a href=""><?php echo $this->getLayout()->getBlock('breadcrumbs')->toHtml(); ?>
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div id="hf_onestep" class="container">
+    <div class="row" id="onestep-header">
+        <div class="col-md-8">
+            <h3>COMPLETE YOUR ORDER</h3>
+            <p>Please fill inthe fields below and click Place Order to complete purchase!</p>
+        </div>
+        <div class="col-md-4 onestep-header-link text-right">
+            <?php if (!$this->helper('customer')->isLoggedIn()) : ?>
+                <?php Mage::getSingleton('customer/session')->setAfterAuthUrl(Mage::getUrl('*/*/*'));?>
+                <?php Mage::getSingleton('customer/session')->setBeforeAuthUrl($this->getRequest()->getRequestUri()); ?>
+                <a href="<?php echo Mage::getUrl('customer/account/login'); ?>">Already registered? Login into your
+                    account</a>
+            <?php endif ?>
+        </div>
+    </div>
+
+    <!-- SHOW ERRORS-->
+    <div class="row" id="errorList" style="display: none;">
+        <div class="col-md-12 text-danger">
+            <div class="alert alert-danger alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <div id="errorContent"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END SHOW ERRORS-->
+
+
+    <div class="row" id="onestep-content">
+        <form action="" class="form-order">
+            <!-- LEFT COLUMN-->
+            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+            <div class="col-md-4 onestep-column" id="onestep-left">
+                <!-- BILLING ADDRESS-->
+                <?php echo $this->getChildHtml('hf18_onestep_billing') ?>
+                <!-- END BILLING ADDRESS-->
+                <!-- SHIPPING ADDRESS-->
+                <?php echo $this->getChildHtml('hf18_onestep_shipping') ?>
+                <!-- END SHIPPING ADDRESS-->
+            </div>
+            <!-- END LEFT COLUMN-->
+
+            <!-- RIGHT COLUMN-->
+            <div class="col-md-8 onestep-column" id="onestep-right">
+
+                <!-- SHIPPING METHOD -->
+                <?php echo $this->getChildHtml('hf18_onestep_shipping_method') ?>
+                <!-- END SHIPPING METHOD -->
+
+                <!-- PAYMENT METHOD -->
+                <?php echo $this->getChildHtml('hf18_onestep_payment_method') ?>
+                <!-- END PAYMENT METHOD -->
+
+                <!-- ORDER CONFIRMATION -->
+                <?php echo $this->getChildHtml('hf18_onestep_order'); ?>
+                <!-- END ORDER CONFIRMATION -->
+
+            </div>
+            <!-- END RIGHT COLUMN-->
+        </form>
+    </div>
+</div>

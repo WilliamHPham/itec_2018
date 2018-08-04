@@ -1,0 +1,101 @@
+#product-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#product-table td, #product-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#product-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(172, 144, 127);
+    color: white;
+}
+
+.divTable{
+    display: table;
+    width: 100%;
+}
+.divTableRow {
+    display: table-row;
+}
+.divTableHeading {
+    background-color: #EEE;
+    display: table-header-group;
+}
+.divTableCell {
+    margin-left: 565px;
+    margin-top: 30px;
+}
+.divTableCell-shipping .divTableCell-discount .divTableCell-tax .divTableCell-grand .divTableCell-subtotal .divTableCell, .divTableHead {
+    display: table-cell;
+    padding: 3px 10px;
+}
+.divTableCell-subtotal {
+    margin-left: 490px;
+    float: left;
+    margin-top: 30px;
+}
+.divTableCell-discount {
+    margin-left: 490px;
+    float: left;
+    margin-top: 30px;
+}
+.divTableCell-shipping {
+    margin-left: 305px;
+    float: left;
+    margin-top: 30px;
+}
+.divTableCell-tax {
+    margin-left: 520px;
+    float: left;
+    margin-top: 30px;
+}
+.divTableCell-grand {
+    margin-left: 470px;
+    float: left;
+    margin-top: 30px;
+}
+.divTableHeading {
+    background-color: #EEE;
+    display: table-header-group;
+    font-weight: bold;
+}
+.divTableFoot {
+    background-color: #EEE;
+    display: table-footer-group;
+    font-weight: bold;
+}
+.divTableBody {
+    display: table-row-group;
+}
+
+#onestep-order-confirmation .btn-position {
+    margin-top: 30px;
+    margin-left: 520px;
+    width: 200px;
+}
+#onestep-order-confirmation .btn-default {
+    background-color: rgb(172, 144, 127);
+    color: white;
+}
+
+#onestep-order-confirmation .row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+#img-loader {
+    position: fixed;
+    left: 0;
+    top:0;
+    z-index: 99;
+    overflow: show;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.5);
+}

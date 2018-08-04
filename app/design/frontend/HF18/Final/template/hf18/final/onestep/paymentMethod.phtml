@@ -1,0 +1,58 @@
+<?php
+$methods = $this->getMethods();
+$nummerOfMethod = count($methods); // return true or false
+?>
+<div class="onestep-block" id="onestep-payment-method">
+    <div class="onestep-title">
+        <div class="onestep-title-number">
+            <span class="text-center">3</span>
+        </div>
+        <div class="onestep-title-caption">
+            <p>Payment Method</p>
+            <?php if (empty($methods)): ?>
+                <dt>
+                    <?php echo $this->__('No Payment Methods');?>
+                    <div id="showbuttonOther" data-value="-1"></div>
+                </dt>
+            <?php else:
+                foreach ($methods as $_method):
+                    $_code = $_method->getCode();
+                    ?>
+                    <div id="dt_method_<?php echo $_code ?>" class="onestep-shipping-title">
+                        <label for="p_method_<?php echo $_code ?>" class="onestep-container">
+                            <?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?>
+                            <?php echo $this->getMethodLabelAfterHtml($_method) ?>
+                            <input
+                                    id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>"
+                                    type="radio" name="payment[method]"
+                                    title="<?php echo $this->escapeHtml($_method->getTitle()) ?>"
+                                    onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if ($this->getSelectedMethodCode() == $_code): ?>
+                                checked="checked"<?php endif; ?>
+                                    class="onestep-shipping-radio"/>
+                            <span class="checkmark"></span>
+                        </label>
+                        <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+                            <div id="dd_method_<?php echo $_code ?>" class="extention">
+                                <?php echo $html; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach;
+            endif; ?>
+        </div>
+    </div>
+</div>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script type="text/javascript">
+    var payment = Payment.prototype;
+    jQuery('#payment_form_ccsave').removeClass('form-list');
+    if ('<?php echo $nummerOfMethod ?>' >= 1) {
+        var codeMethodF = '<?php if($nummerOfMethod != 0){ echo $methods[0]->getCode();} ?>';
+        Payment.prototype.switchMethod(codeMethodF);
+        document.getElementById('p_method_'+codeMethodF).checked = true;
+        jQuery(document).ready(function () {
+            jQuery(".extention :input").attr("disabled", true);
+            jQuery("#dd_method_"+codeMethodF+" :input").removeAttr("disabled");
+        });
+    }
+</script>

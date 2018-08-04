@@ -1,0 +1,44 @@
+.categories-item-beta {
+    position: relative;
+    overflow: hidden;
+}
+.categories-image {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+.categories-item .categories-image img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    -o-object-fit: contain;
+    object-position: top;
+    -o-object-position: top;
+    margin: auto;
+}
+.categories-item-beta .categories-name a {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 550px;
+}
+.categories-item-beta .categories-name {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    display: table;
+    text-align: center;
+    margin-top: -15px;
+
+}
+.categories-item .categories-name a:hover {
+    color: #ac907f;
+}

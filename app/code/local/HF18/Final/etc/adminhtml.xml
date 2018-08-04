@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <final module="hf18_final">
+            <title>Smart Voucher</title>
+            <sort_order>100</sort_order>
+            <action>*/voucher/index</action>
+        </final>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <tab1>
+                                        <title>HF18_team 2</title>
+                                    </tab1>
+                                    <contenttab>
+                                        <title>HF18_team 2</title>
+                                    </contenttab>
+                                    <footerinfo>
+                                        <title>HF18_team 2</title>
+                                    </footerinfo>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

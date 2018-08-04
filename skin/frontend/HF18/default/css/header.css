@@ -1,0 +1,42 @@
+.item_left
+{	
+	float: left;
+	margin-left: 200px;
+	margin-right: 5px;
+	padding: 20px 0;
+	color: #999;
+	font-size: 15px;
+	display: inline-block;
+}
+
+.item_center
+{
+	padding: 20px 0;
+	color: #999;
+	font-size: 15px;
+}
+
+.social-icon
+{ 
+	float: left;
+	margin-left: 150px;
+	margin-right: 5px;
+	padding: 20px 0;
+	font-size: 15px;
+	display: inline-block;
+}
+
+.header_row
+{
+	margin: 0;
+}
+
+.social-icon a
+{
+	color: #999;
+}
+
+.social-icon a:hover
+{
+	color: #ac907f;
+}

@@ -1,0 +1,116 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2018 Magento, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = Mage::helper('core')->quoteEscape($this->__('Add to Cart')); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart1">
+        <?php if(!$_product->isGrouped()): ?>
+        <div class="qty-wrapper">
+          <div class="shop-post-cart">
+            <div class="cart-input"><form>
+              <div class="quantity">
+              <div class="quantity-button quantity-down " field='qty'><span>-</span></div>
+                  <!-- <input type='text' name='quantity' value='0' class='qty' /> -->
+                  <input type="text" pattern="\d*(\.\d+)?" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
+              <div class="quantity-button quantity-up" field='qty'><span>+</span></div>
+              </div>
+              </form>
+            </div>
+
+              <?php echo $this->getChildHtml('', true, true) ?>
+                <div class="cart-submit" >
+                  <button title="<?php echo $buttonTitle ?>" class="rv-btn rv-btn-md rv-btn-primary text-uppercase" onclick="productAddToCartForm.submit(this)">
+                    <?php echo $buttonTitle ?>
+                  </button>
+                    <?php echo $this->getChildHtml('', true, true) ?>
+                  <form class="like" onclick="location.href = '<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>'" >
+                      <!-- <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"> -->
+                        <input id="like" type="checkbox" />
+                        <label class="check" for="like"></label>
+                      <!-- </a> -->
+                  </form>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php endif; ?>
+
+<ul class="more-info">
+    <li>
+        <span class="info-title">SKU: </span>
+        <span class="info-content"><?php echo $_product->getSku();?></span>
+    </li>
+    <?php
+    $model = Mage::getModel('tag/tag');
+    $tagCollection= $model->getResourceCollection()
+        ->addProductFilter($_product->getId())
+        ->addPopularity()
+        ->load();
+    if($tagCollection->getSize() > 0):
+        ?>
+        <li>
+            <span class="info-title">Tags: </span>
+            <span class="info-content">
+            <?php
+            $i = 0;
+            foreach($tagCollection as $tag) {
+                if ($i == $tagCollection->getSize() - 1) {
+                    echo $tag->getName();
+                }
+                else {
+                    echo $tag->getName().", ";
+                }
+                $i++;
+            }
+            ?>
+        </span>
+        </li>
+    <?php endif; ?>
+    <?php
+    $categories = $_product->getCategoryIds();
+    if(count($categories) > 0):
+        ?>
+        <li>
+            <span class="info-title">Category: </span>
+            <span class="info-content">
+            <?php
+            for($i = 0; $i < count($categories); $i++) {
+                if ($i == count($categories) - 1) {
+                    echo Mage::getModel('catalog/category')->load($categories[$i])->getName();
+                }
+                else {
+                    echo Mage::getModel('catalog/category')->load($categories[$i])->getName().", ";
+                }
+            }
+            ?>
+        </span>
+        </li>
+    <?php endif; ?>
+</ul>

@@ -1,0 +1,106 @@
+.footer-container
+{
+	padding-top: 50px;
+	width: 1200px;
+	height: 350px;
+}
+
+.footer-company, .footer-link, .footer-shop, .footer-ins
+{
+	color: #e5e5e5;
+	font-family: "Dosis", Arial, "Helvetica Neue", sans-serif;
+}
+
+.logo
+{
+	width: 100%;
+	color: #e5e5e5;
+	font-size: 40px;
+	font-weight: 400;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 0;
+	max-width: 500px;
+	min-height: 0px;
+}
+
+.logo a
+{
+	text-decoration: none;
+	color: #e5e5e5;
+}
+
+.logo a:hover
+{
+	text-decoration: none;
+	color: #ac907f;
+}
+
+.link-header, .shop-header, .ins-header
+{
+	margin-top: 10px;
+	font-size: 20px;
+	font-weight: 300px;
+	text-transform: uppercase;
+}
+
+.contact, .link, .shop
+{
+	color: #999;
+	font-size: 15px;
+	font-weight: 300px;
+	padding: 0;
+	margin: 0;
+}
+
+.link a, .shop a
+{
+	text-decoration: none;
+	color: #999;
+}
+
+.link a:hover,
+.shop a:hover
+{
+	text-decoration: none;
+	color: #ac907f;
+}
+
+.contact li
+{
+	list-style: none;
+	line-height: 3;
+}
+
+.link li, .shop li
+{
+	list-style: none;
+	line-height: 2;
+}
+
+.footer-ins .ins-list 
+{
+	margin: 0 -7px;
+	padding: 0;
+}
+
+.footer-ins .ins-list li 
+{
+	display: inline-block;
+	width: 90px;
+	height: 80px;
+	list-style: none;
+	padding: 0 5px;
+	margin-bottom: 10px;
+}
+
+.footer-ins .ins-list li img 
+{
+	width: 100%;
+}
+
+.footer-center
+{
+	padding: 20px 0 0 0;
+}
+

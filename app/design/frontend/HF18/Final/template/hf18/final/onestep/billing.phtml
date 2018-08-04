@@ -1,0 +1,120 @@
+<?php
+$customer = $this->getCustomer();
+$address = $this->getCustomerAddress();
+$country = $this->getCountries();
+if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+    $region = $this->getRegionCollection('US');
+} else {
+    $region = $this->getRegionCollection($address->getCountry());
+}
+$address_billing = $this->getBillingAddressIdQuote();
+$first_key = key($customer->getAddresses());
+?>
+
+<div class="onestep-block" id="onestep-billing-address" id="billing_form">
+    <div class="onestep-title">
+        <div class="onestep-title-number">
+            <span class="text-center">1</span>
+        </div>
+        <div class="onestep-title-caption">
+            <p>Billing address</p>
+        </div>
+    </div>
+    <div class="onestep-content row">
+        <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) : ?>
+            <div class="row ">
+                <div class="col-md-12 mb-3" id="bill_add">
+                    <div class="address_items_billing">
+                        <div id="billing_list"
+                             class="<?php if (count($customer->getAddresses()) > 3) echo "scroll-bar" ?>">
+                            <?php foreach ($customer->getAddresses() as $address_all) : ?>
+                                <?php $addr = $address_all->toArray() ?>
+                                <div class="multi_add billing_add <?php if ($address_all->getId() == $address->getId()) {
+                                    echo "dashed";
+                                } ?>" style="margin-top: 10px;"
+                                     data-value="<?php echo $address_all->getId() ?>"
+                                     onclick="test.switchAddress('<?php echo $address_all->getId() ?>')">
+                                    <p class="name"><?php echo $addr['firstname']." ".$addr['middlename']." ".$addr['lastname']; ?></>
+                                    <p class="address">
+                                        Address: <?php echo $addr['street'] . ", " . $addr['city'] . ", " . $addr['region']; ?></p>
+                                    <p class="address"><?php echo $this->getCountryByCode($addr['country_id']); ?> </p>
+                                    <p class="phone">Phone: <?php echo $addr['telephone']; ?></p>
+                                    <input type="radio" hidden name="billing_address_id" <?php if($address_all->getId()==$address->getId()){ echo 'checked="checked"';}?>
+                                    id="id_<?php echo $address_all->getId()?>" value="<?php echo $address_all->getId()?>">
+                                    <input type="text" hidden name="billing[address_id]" id="input_<?php echo $address_all->getId()?>"
+                                        <?php if($address_all->getId()!=$address->getId()){ echo "disabled";}?> value="<?php echo $address_billing?>">
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+
+                    <div class="newBilling well billing_add" style="margin-top: 10px;" data-value=""
+                         onclick="test.switchAddress('');">Add New Address
+                        <input type="radio" hidden name="billing_address_id" id="id_" value="">
+                        <input type="hidden" hidden name="billing[address_id]" value="">
+                    </div>
+
+                    <div class="well rollBack roll_back_billing multi rounded">Back To My Address</div>
+
+                </div>
+            </div>
+            <div class="new_billing" id="billing_empty" style="display:none">
+                <?php echo $this->getChildHtml('hf18_onestep_emptyBilling') ?>
+            </div>
+        <?php else: ?>
+            <div>
+                <?php echo $this->getChildHtml('hf18_onestep_emptyBilling') ?>
+            </div>
+        <?php endif ?>
+        <div class="row chckbox">
+            <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) : ?>
+                <div class="form-check">
+                    <?php $newsletter=$this->checkNewsletter($customer->getEmail())?>
+                    <?php if(!$newsletter):?>
+                        <div class="form-check display: <?php echo " none"; ?>">
+                            <input class="form-check-input is-invalid" type="checkbox" name="newslettersubscription"
+                                   value=""
+                                   id="_newslettersubscription">
+                            <label class="form-check-label" for="_newslettersubscription">
+                                Sign up for our newsletter
+                            </label>
+                        </div>
+                    <?php endif?>
+                </div>
+            <?php else: ?>
+                <div class="form-check">
+                    <input class="form-check-input is-invalid" type="checkbox" name=""
+                           id="login:register">
+                    <input type="hidden" name="checkout_method" value="">
+                    <label class="form-check-label" for="login:register" style="padding-top: 10px;">
+                        Create account for later use
+                    </label>
+                </div>
+            <?php endif?>
+
+            <div class="form-check">
+                <input class="form-check-input is-invalid" type="radio" name="billing[use_for_shipping]"
+                       value="1"
+                       id="billing[use_for_shipping]" checked="true">
+                <label class="form-check-label" for="billing:use_for_shipping_yes">
+                    Ship to this address
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input is-invalid" type="radio" name="billing[use_for_shipping]"
+                       value="0"
+                       id="billing:use_for_shipping_no">
+                <label class="form-check-label" for="billing:use_for_shipping_no">
+                    Ship to different address
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var test = listAddress.prototype;
+    test.switchAddress('<?php if (!empty($customer->getAddresses())) {
+        echo $customer->getAddresses()[$first_key]->getId();
+    }?>');
+</script>

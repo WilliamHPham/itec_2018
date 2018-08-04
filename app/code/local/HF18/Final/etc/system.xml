@@ -1,0 +1,439 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <hf18 translate ="label">
+            <label>HF18</label>
+            <sort_order>2</sort_order>
+        </hf18>
+    </tabs>
+    <sections>
+        <tab1 translate="label" module="adminhtml">
+            <label>Header</label>
+            <tab>hf18</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <label>Config</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <text_field translate="label comment">
+                            <label>Slogan</label>
+                            <comment>Slogan in header component.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </text_field>
+
+                        <text_field_gl translate="label comment">
+                            <label>Google Plus Url</label>
+                            <comment>Google Plus Link - <![CDATA[This link must contain <strong><span style="color: red;">https://</span></strong>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </text_field_gl>
+
+                        <text_field_fb translate="label comment">
+                            <label>Facebook Url - </label>
+                            <comment>Facebook Link - <![CDATA[This link must contain <strong><span style="color: red;">https://</span></strong>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </text_field_fb>
+
+                        <text_field_tw translate="label comment">
+                            <label>Twitter Url</label>
+                            <comment>Twitter Link - <![CDATA[This link must contain <strong><span style="color: red;">https://</span></strong>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </text_field_tw>
+
+                        <text_field_pt translate="label comment">
+                            <label>Pinterest Url</label>
+                            <comment>Pinterest Link - <![CDATA[This link must contain <strong><span style="color: red;">https://</span></strong>]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </text_field_pt>
+
+                        <heading_example translate="label">
+                            <label>Uploads file</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_example>
+
+                        <imagefield>
+                            <label>Image direction</label>
+                            <comment><![CDATA[File saved in <strong><span style="color: red;">media/uploads</span></strong> folder.]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">uploads</upload_dir>
+                            <base_url type="media" scope_info="1">uploads</base_url>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </imagefield>
+                    </fields>
+                </general>
+            </groups>
+        </tab1>
+
+        <contenttab translate="label" module="adminhtml">
+            <label>Content</label>
+            <tab>hf18</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <imageheader translate="label comment">
+                    <label>Image Header</label>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <imagefield>
+                            <label>Image direction</label>
+                            <comment><![CDATA[File saved in <strong><span style="color: red;">media/uploads</span></strong> folder.]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">uploads</upload_dir>
+                            <base_url type="media" scope_info="1">uploads</base_url>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </imagefield>
+                    </fields>
+                </imageheader>
+            </groups>
+
+            <groups>
+                <homeslider1 translate="label comment">
+                    <label>Home Slider 1</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <slider_title1 translate="label comment">
+                            <label>Title</label>
+                            <comment>Title of slider.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_title1>
+                        <slider_content1 translate="label comment">
+                            <label>Content</label>
+                            <comment>Content of slider.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_content1>
+                        <slider_image1>
+                            <label>Slider Image</label>
+                            <comment><![CDATA[File saved in <strong><span style="color: red;">media/sliders</span></strong> folder.]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">sliders</upload_dir>
+                            <base_url type="media" scope_info="1">sliders</base_url>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_image1>
+                        <slider_button1>
+                            <label>Button URL</label>
+                            <comment>Link of button.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_button1>
+                    </fields>
+                </homeslider1>
+            </groups>
+            <groups>
+                <homeslider2 translate="label comment">
+                    <label>Home Slider 2</label>
+                    <sort_order>51</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <slider_title2 translate="label comment">
+                            <label>Title</label>
+                            <comment>Title of slider.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_title2>
+                        <slider_content2 translate="label comment">
+                            <label>Content</label>
+                            <comment>Content of slider.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_content2>
+                        <slider_image2>
+                            <label>Slider Image</label>
+                            <comment><![CDATA[File saved in <strong><span style="color: red;">media/sliders</span></strong> folder.]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">sliders</upload_dir>
+                            <base_url type="media" scope_info="1">sliders</base_url>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_image2>
+                        <slider_button2>
+                            <label>Button URL</label>
+                            <comment>Link of button.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_button2>
+                    </fields>
+                </homeslider2>
+            </groups>
+            <groups>
+                <homeslider3 translate="label comment">
+                    <label>Home Slider 3</label>
+                    <sort_order>52</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <slider_title3 translate="label comment">
+                            <label>Title</label>
+                            <comment>Title of slider.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_title3>
+                        <slider_content3 translate="label comment">
+                            <label>Content</label>
+                            <comment>Content of slider.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_content3>
+                        <slider_image3>
+                            <label>Slider Image</label>
+                            <comment><![CDATA[File saved in <strong><span style="color: red;">media/sliders</span></strong> folder.]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">sliders</upload_dir>
+                            <base_url type="media" scope_info="1">sliders</base_url>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_image3>
+                        <slider_button3>
+                            <label>Button URL</label>
+                            <comment>Link of button.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </slider_button3>
+                    </fields>
+                </homeslider3>
+            </groups>
+        </contenttab>
+
+        <footerinfo translate="label" module="adminhtml">
+            <label>Footer</label>
+            <tab>hf18</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <companyinfo translate="label comment">
+                    <label>Company Info</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <company_name translate="label comment">
+                            <label>Company</label>
+                            <comment>Company name.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </company_name>
+
+                        <company_name_link translate="label">
+                            <label>Company Url</label>
+                            <comment>Company name link.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </company_name_link>
+
+                        <company_address translate="label">
+                            <label>Address</label>
+                            <comment>Company address.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </company_address>
+
+                        <company_phone>
+                            <label>Phone</label>
+                            <comment>Company phone.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </company_phone>
+
+                        <company_email>
+                            <label>Email</label>
+                            <comment>Company email.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </company_email>
+                    </fields>
+                </companyinfo>
+            </groups>
+        </footerinfo>
+
+        <payment>
+            <groups>
+                <smart_voucher translate="label comment" module="hf18_final">
+                    <label>Smart Voucher</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+
+                        </title>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status>
+                        <submit_url>
+                            <label>Gateway URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>58</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </submit_url>
+                        <merchant_id>
+                            <label>Merchant ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </merchant_id>
+                        <allowspecific translate="label">
+                            <label>Payment Applicable From</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allowspecific>
+                        <specificcountry translate="label">
+                            <label>Countries Payment Applicable From</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>70</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><allowspecific>1</allowspecific></depends>
+                        </specificcountry>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <frontend_type>text</frontend_type>
+                        </sort_order><sort_order>100</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+
+                    </fields>
+                </smart_voucher>
+            </groups>
+        </payment>
+    </sections>
+</config>

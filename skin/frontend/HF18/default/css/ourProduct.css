@@ -1,0 +1,104 @@
+.our-products{
+    background-color: #f8f8f8;
+}
+.heading-section__title--center {
+    float: none;
+    display: inline-block;
+    position: relative;
+}
+.heading-section__title--center:after {
+    content: '';
+    height: 2px;
+    width: 50px;
+    background: #ac907f;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -25px;
+}
+.heading-section__title--center {
+    float: none;
+    display: inline-block;
+    position: relative;
+}
+.heading-section--base {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 70px;
+}
+.heading-section__title--center h3 {
+    font-size: 36px;
+}
+/* change june 11 2018 */
+.our-products-beta .products-quick-link li a {
+    display: inline-block;
+    padding: 0 30px;
+    font-size: 25px;
+    color: #999;
+    text-decoration: none !important;
+}
+/**/
+.our-products-beta .products-quick-link {
+    margin-bottom: 50px;
+    text-align: center;
+}
+.our-products-beta .heading-section {
+    margin-bottom: 35px;
+}
+.clear-list-style li {
+    display: inline-block;
+}
+.clear-list-style {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.product-item__image img {
+    width: 100% !important;
+    height: 360px;
+}
+.product-item__image {
+    position: relative;
+}
+/*active name catagory*/
+.products-quick-link .active a{
+    color: #b39285 !important;
+}
+
+/*style quickly Shop start*/
+.product-item__image:hover .product-item__link-box{
+    visibility: visible;
+}
+.product-item__link-box{
+    visibility: hidden;
+    position:absolute;
+    bottom: 0;
+    background: #948075;
+    width: 100%;
+    text-align: center;
+}
+.product-item__link-box span{
+
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+}
+/*style quickly Shop end*/
+
+/*product name */
+.product-item__name a {
+    color: #333;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/*start : style color and font price : ex : 400$*/
+.product-item__price__content {
+    font-weight: 600;
+    color: #666;
+}
+.product-item__price__content--op {
+    color: #999;
+}
+/*end : style color and font price : ex : 400$*/

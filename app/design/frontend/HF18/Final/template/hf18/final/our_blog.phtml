@@ -1,0 +1,24 @@
+<div id="our-blogs">
+<div class='row' style="margin: 0">
+    <div class='col-md-offset-1 col-md-10'>
+        <div class="heading-section heading-section--base mt-5">
+            <div class="heading-section__title heading-section__title--center">
+                <h3 class="text-uppercase">Our Blog</h3>
+            </div>
+        </div>
+        <div class="carousel slide media-carousel" id="media">
+            <div class="carousel-inner">
+                <?php $postsNumber = Mage::getModel('evozon_blog/post')->getCollection()->getSize(); $perPage = 3; $numberPage = ceil($postsNumber / $perPage); $posts = array(); for($i = 0; $i < $numberPage; $i++) { $posts[$i] = Mage::getModel('evozon_blog/post')->getCollection() ->setPageSize($perPage)->setCurPage($i + 1); ?>
+                    <div class="item <?php if($i == 0 ) echo " active "; ?>">
+                        <div class="row">
+                            <?php foreach($posts[$i] as $post) { $post->load(); ?>
+                                <div class="col-md-4"> <a class="thumbnail" href=""><img alt="" style="height: 100%; width:100%" src="<?php echo Mage::getBaseUrl('media')."/evozon/blog/post/".$post->getImage() ?>" style="height: 150px;"></a>
+                                    <div class="blog-post-item-date"> <span><?php echo $post->getCreatedAt() ?></span> </div> <a href="" class="link-style"><?php echo $post->getTitle() ?></a>
+                                    <p><?php echo $post->getPostContent() ?></p>
+                                </div>
+                            <?php } ?> </div>
+                    </div>
+                <?php } ?> </div> <a data-slide="prev" href="#media" class="left carousel-control">‹</a> <a data-slide="next" href="#media" class="right carousel-control">›</a> </div>
+    </div>
+</div>
+</div>

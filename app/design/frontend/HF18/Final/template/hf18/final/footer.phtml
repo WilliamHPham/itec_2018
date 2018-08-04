@@ -1,0 +1,47 @@
+<footer>
+	<!-- Begin Footer Wrapper-->
+	<div id="footer-wrapper">
+		<div class="container footer-container">
+			<div class="col-md-4 col-sm-6">
+                <div class="footer-company">
+                    <div class="logo"><a href="<?php echo Mage::getStoreConfig('footerinfo/companyinfo/company_name_link'); ?>" target="_blank"><?php echo Mage::getStoreConfig('footerinfo/companyinfo/company_name'); ?></a></div>
+                    <ul class="contact">
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <span><?php echo Mage::getStoreConfig('footerinfo/companyinfo/company_address'); ?></span>
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <span><?php echo Mage::getStoreConfig('footerinfo/companyinfo/company_phone'); ?></span>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <span><?php echo Mage::getStoreConfig('footerinfo/companyinfo/company_email'); ?></span>
+                        </li>
+                    </ul>
+                </div>
+			</div>
+
+			<div class="col-md-2 col-sm-3">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_link')->toHtml(); ?> 
+			</div>
+
+			<div class="col-md-2 col-sm-3">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_shop')->toHtml(); ?> 
+			</div>
+
+			<div class="col-md-4 col-sm-12">
+				<div class="footer-ins">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_instagram')->toHtml(); ?> 
+				</div>
+
+			</div>
+		</div>
+		<!-- End Footer Wrapper-->
+		
+		<!-- Begin Footer Wrapper-->
+		<div id="footer-copyright">
+			<div class="item_center text-center footer-center">Copyright © 2017 Designed by SmartOSC. All rights reserved.</div>
+		</div>
+		<!-- End Footer Wrapper-->
+	</footer>

@@ -1,0 +1,151 @@
+<?php
+$customer = $this->getCustomer();
+$address = $this->getCustomerAddress();
+$country = $this->getCountries();
+if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+    $region = $this->getRegionCollection('US');
+} else {
+    $region = $this->getRegionCollection($address->getCountry());
+}
+?>
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="shipping:firstname">
+            First name
+            <em style="color: red">*</em>
+        </label>
+        <input type="text" class="form-control" id="shipping:firstname" title="*" name="shipping[firstname]"
+               placeholder="First name" required value="">
+        <p class="message text-danger" style="display: none">This is required</p>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="shipping:lastname">
+            Last name
+            <em style="color: red">*</em>
+        </label>
+        <input type="text" class="form-control" id="shipping:lastname" title="*" name="shipping[lastname]"
+               placeholder="Last name"
+               required value="">
+        <p class="message text-danger" style="display: none">This is required</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <label for="shipping:email" style="padding-top: 10px;">
+            Email
+            <em style="color: red">*</em>
+        </label>
+        <input type="email" class="form-control" id="shipping:email" name="shipping[email]"
+               placeholder="Email"
+               required value="<?php echo $customer->getEmail() ?>">
+        <p class="message_email text-danger" style="display: none">Invalid Email Address</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <label for="shipping:company" style="padding-top: 10px;">
+            Company
+            <em style="color: red">*</em>
+        </label>
+        <input type="text" class="form-control" id="shipping:company" title="*" name="shipping[company]"
+               placeholder="Company"
+               required value="">
+        <p class="message text-danger" style="display: none">This is required</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <label for="shipping:street1" style="padding-top: 10px;">
+            Address
+            <em style="color: red">*</em>
+        </label>
+        <input type="text" class="form-control" name="shipping[street][]" title="*" id="shipping:street1"
+               placeholder="Address"
+               required value="">
+        <p class="message text-danger" style="display: none">This is required</p>
+        <input type="text" class="form-control" name="shipping[street][]" id="shipping:street2"
+               placeholder="Address" value="" style="margin-top: 10px;"
+        >
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="shipping:postcode" style="padding-top: 10px;">
+            Zip/Postal Code
+            <em style="color: red">*</em>
+        </label>
+        <input type="text" class="form-control" id="shipping:postcode" name="shipping[postcode]" title="zip"
+               placeholder="Zip/Postal Code" required value="">
+        <p class="message_zip text-danger" style="display: none">This is required</p>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="shipping:city" style="padding-top: 10px;">
+            City
+            <em style="color: red">*</em>
+        </label>
+        <input type="text" class="form-control" id="shipping:city" name="shipping[city]"
+               placeholder="City" value="">
+        <p class="message text-danger" style="display: none">This is required</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="shipping:country_id" style="padding-top: 10px;">
+            Country
+            <em style="color: red">*</em>
+        </label>
+        <select name="shipping[country_id]" id="shipping:country_id" class="form-control countryShipping" required>
+            <?php foreach ($country as $item): ?>
+                <option value="<?php echo $item['value'] ?>"
+                        data-value="<?php echo $item['value'] ?>"
+                        data-link="<?php echo Mage::getUrl('hf18/onestep/ajaxRegion'); ?>"
+                    <?php if ($item['value'] == 'US') {
+                        echo "selected";
+                    } ?>>
+                    <?php echo $item['label'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <p class="message text-danger" style="display: none">This is required</p>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="shipping:region" style="padding-top: 10px;">
+            State/Province
+            <em style="color: red">*</em>
+        </label>
+        <select name="shipping[region_id]" id="shipping:region"
+                class="form-control regionSelectShipping <?php if (!$region) {
+                    echo "hidden";
+                } ?>" required>
+            <?php foreach ($region as $item): ?>
+                <option value="<?php echo $item['region_id'] ?>"><?php echo $item['name'] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <input type="text" name="shipping[region]" class="regionInputShipping <?php if ($region) {
+            echo "hidden";
+        } else {
+            echo "title='r*'";
+        } ?>"
+               value="" placeholder="State/Province">
+        <p class="message text-danger" style="display: none">This is required</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <label for="shipping:telephone" style="padding-top: 10px;">
+            Telephone
+            <em style="color: red">*</em>
+        </label>
+        <input type="text" title="phone" class="form-control" id="shipping:telephone"
+               name="shipping[telephone]"
+               placeholder="Phone"
+               required value="">
+        <p class="message_phone text-danger" style="display: none">Please enter a valid phone number.</p>
+    </div>
+    <input type="hidden" name="shipping[save_in_address_book]" value="1">
+</div>

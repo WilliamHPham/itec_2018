@@ -1,0 +1,124 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <HF18_Final>
+            <version>0.1.11</version>
+        </HF18_Final>
+    </modules>
+
+    <frontend>
+        <routers>
+            <final>
+                <use>standard</use>
+                <args>
+                    <module>HF18_Final</module>
+                    <frontName>hf18</frontName>
+                </args>
+            </final>
+        </routers>
+
+        <layout>
+            <updates>
+                <final>
+                    <file>hf18_final.xml</file>
+                </final>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <fieldsets>
+            <sales_convert_quote_payment>
+                <smart_voucher>
+                    <to_order_payment>*</to_order_payment>
+                </smart_voucher>
+            </sales_convert_quote_payment>
+        </fieldsets>
+
+        <resources>
+            <hf18_final_data_setup>
+                <setup>
+                    <module>HF18_Final</module>
+                    <class>HF18_Final_Model_Resource_Setup</class>
+                </setup>
+            </hf18_final_data_setup>
+        </resources>
+        <blocks>
+            <hf18_final>
+                <class>HF18_Final_Block</class>
+            </hf18_final>
+        </blocks>
+        <models>
+            <hf18_final>
+                <class>HF18_Final_Model</class>
+                <resourceModel>voucher_resource</resourceModel>
+            </hf18_final>
+
+            <voucher_resource>
+                <class>HF18_Final_Model_Resource</class>
+                <entities>
+                    <voucher>
+                        <table>smart_voucher</table>
+                    </voucher>
+                </entities>
+            </voucher_resource>
+        </models>
+        <helpers>
+            <hf18_final>
+                <class>HF18_Final_Helper</class>
+            </hf18_final>
+        </helpers>
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <checkout_submit_all_after_handler>
+                        <type>model</type>
+                        <class>hf18_final/observer</class>
+                        <method>disableVoucher</method>
+                    </checkout_submit_all_after_handler>
+                </observers>
+            </sales_order_place_after>
+        </events>
+    </global>
+
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+        </resources>
+    </acl>
+
+    <default>
+        <tab1>
+            <text_field>FREE SHIPPING FOR STANDARD ORDER OVER $100</text_field>
+        </tab1>
+
+        <payment>
+            <smart_voucher>
+                <model>hf18_final/standard</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>SMART VOUCHER</title>
+                <payment_action>sale</payment_action>
+                <submit_url>https://someurl.com</submit_url>
+                <merchant_id>Insert merchant id</merchant_id>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </smart_voucher>
+        </payment>
+    </default>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <hf18_final before="Mage_Adminhtml">HF18_Final_Adminhtml</hf18_final>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

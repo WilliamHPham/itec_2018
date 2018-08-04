@@ -1,0 +1,59 @@
+<div class="onestep-block" id="onestep-order-confirmation">
+    <?php
+    $quote = Mage::getModel('checkout/session')->getQuote();
+    $cartItems = $quote->getAllVisibleItems();
+    ?>
+    <div class="onestep-title">
+        <div class="onestep-title-number">
+            <span class="text-center">4</span>
+        </div>
+        <div class="onestep-title-caption">
+            <p>Order Confirmation</p>
+        </div>
+    </div>
+    <div class="onestep-content row">
+        <h4>Checkout review</h4>
+        <table id="product-table">
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Subtotal</th>
+            </tr>
+            <?php
+            foreach ($cartItems as $item):
+                $subtotal_product += $item->getQty() * $item->getPrice();
+                ?>
+                <tr>
+                    <td><?php echo $item->getName(); ?></td>
+                    <td><?php echo Mage::helper('core')->currency($item->getPrice(),true,false); ?></td>
+                    <td><?php echo $item->getQty(); ?></td>
+                    <td><?php echo Mage::helper('core')->currency($item->getQty() * $item->getPrice(),true,false);  ?></td>
+                </tr>
+            <?php endforeach ?>
+        </table>
+        <div class="divTable">
+            <div class="divTableBody">
+                <div class="divTableRow">
+                    <div class="divTableCell-subtotal">&nbsp;Subtotal</div>
+                    <div class="divTableCell" id="subtotal-id"><?php echo Mage::helper('core')->currency($quote->getSubtotal(),true,false); ?></div>
+                </div>
+                <div class="divTableRow">
+                    <div class="divTableCell-shipping">&nbsp;Shipping &amp; Handling(Flat Rate - Fixed)</div>
+                    <div class="divTableCell" id="shipping-id">&nbsp;<?php echo Mage::helper('core')->currency($quote->getShippingAddress()->getBaseShippingAmount(),true,false); ?></div>
+                </div>
+                <div class="divTableRow">
+                    <div class="divTableCell-tax">&nbsp;Tax</div>
+                    <div class="divTableCell" id="tax-id">&nbsp;<?php echo Mage::helper('core')->currency($quote->getShippingAddress()->getTaxAmount(),true,false); ?></div>
+                </div>
+                <div class="divTableRow">
+                    <div class="divTableCell-grand" style="font-weight: 700">&nbsp;Grand Total</div>
+                    <div class="divTableCell" id="grandTotal-id" style="font-weight: 700">&nbsp<?php echo Mage::helper('core')->currency($subtotal_product + $quote->getShippingAddress()->getBaseShippingAmount() + $quote->getShippingAddress()->getTaxAmount(),true,false); ?></div>
+                </div>
+            </div>
+        </div>
+        <button id="btn-order" type="button" class="btn btn-default btn-position" style="text-align: center" data-value = "<?php echo Mage::getUrl('hf18/onestep/ajaxShipping'); ?>" data-execute="<?php echo Mage::getUrl('hf18/onestep/saveQuote') ?>"
+                data-redirect="<?php echo Mage::getUrl('checkout/onepage/success') ?>"
+        >Place Order</button>
+    </div>
+</div>
